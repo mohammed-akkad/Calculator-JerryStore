@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:scrollIndicators="none"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    app:layout_scrollEffect="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:background="@drawable/result_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/view_divider"
+                    android:layout_width="32dp"
+                    android:layout_height="4dp"
+                    android:layout_marginBottom="@dimen/marginSmall"
+                    android:background="@drawable/divider_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_current_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/marginExtraLarge"
+                    android:layout_marginBottom="@dimen/marginExtraLarge"
+                    android:fontFamily="@font/doppio_one_regular"
+                    android:maxLines="2"
+                    android:text="@string/zero"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/brandDark"
+                    android:textSize="36sp"
+                    app:layout_constraintBottom_toTopOf="@id/view_divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_previous_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/marginExtraLarge"
+                    android:layout_marginBottom="@dimen/marginNormal"
+                    android:alpha="0.4"
+                    android:fontFamily="@font/doppio_one_regular"
+                    android:maxLines="1"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/brandDark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@id/textView_current_result"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/button_navigation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:text=""
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="340dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_divider"
+            style="@style/circleBasicButtonStyle.circleBasicOperationButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="@dimen/marginLarge"
+            android:text="@string/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_mod"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_multiple"
+            style="@style/circleBasicButtonStyle.circleBasicOperationButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/marginNormal"
+            android:paddingTop="@dimen/marginNormal"
+            android:text="@string/multiple"
+            app:layout_constraintBottom_toTopOf="@+id/button_add"
+            app:layout_constraintEnd_toEndOf="@+id/button_divider"
+            app:layout_constraintTop_toBottomOf="@+id/button_divider" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_add"
+            style="@style/circleBasicButtonStyle.circleBasicOperationButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginBottom="@dimen/marginNormal"
+            android:text="@string/add"
+            app:layout_constraintBottom_toTopOf="@+id/button_sub"
+            app:layout_constraintEnd_toEndOf="@+id/button_multiple"
+            app:layout_constraintTop_toBottomOf="@+id/button_multiple" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_sub"
+            style="@style/circleBasicButtonStyle.circleBasicOperationButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="@dimen/marginNormal"
+            android:text="@string/sub"
+            app:layout_constraintBottom_toTopOf="@+id/button_equal"
+            app:layout_constraintEnd_toEndOf="@+id/button_add"
+            app:layout_constraintTop_toBottomOf="@+id/button_add" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_equal"
+            style="@style/circleBasicButtonStyle.circleBasicOperationButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/equal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/button_sub"
+            app:layout_constraintTop_toBottomOf="@+id/button_sub" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_mod"
+            style="@style/circleBasicButtonStyle.circleBasicOperationButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:text="@string/mod"
+            app:layout_constraintBottom_toBottomOf="@+id/button_divider"
+            app:layout_constraintEnd_toStartOf="@+id/button_divider"
+            app:layout_constraintStart_toEndOf="@+id/button_clear_last"
+            app:layout_constraintTop_toTopOf="@+id/button_divider" />
+
+        <ImageButton
+            android:id="@+id/button_clear_last"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:contentDescription="@string/clear_last"
+            android:src="@drawable/icon_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@+id/button_divider"
+            app:layout_constraintEnd_toStartOf="@+id/button_mod"
+            app:layout_constraintStart_toEndOf="@+id/button_ac"
+            app:layout_constraintTop_toTopOf="@+id/button_divider" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_ac"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:text="@string/ac"
+            app:layout_constraintBottom_toBottomOf="@+id/button_divider"
+            app:layout_constraintEnd_toStartOf="@+id/button_clear_last"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button_divider" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_seven"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/seven"
+            app:layout_constraintBottom_toBottomOf="@+id/button_multiple"
+            app:layout_constraintEnd_toEndOf="@+id/button_ac"
+            app:layout_constraintStart_toStartOf="@+id/button_ac"
+            app:layout_constraintTop_toTopOf="@+id/button_multiple" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_eight"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/eight"
+            app:layout_constraintBottom_toBottomOf="@+id/button_multiple"
+            app:layout_constraintEnd_toEndOf="@+id/button_clear_last"
+            app:layout_constraintStart_toStartOf="@+id/button_clear_last"
+            app:layout_constraintTop_toTopOf="@+id/button_multiple" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_nine"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/night"
+            app:layout_constraintBottom_toBottomOf="@+id/button_multiple"
+            app:layout_constraintEnd_toEndOf="@+id/button_mod"
+            app:layout_constraintStart_toStartOf="@+id/button_mod"
+            app:layout_constraintTop_toTopOf="@+id/button_multiple" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_four"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/four"
+            app:layout_constraintBottom_toBottomOf="@+id/button_add"
+            app:layout_constraintEnd_toEndOf="@+id/button_seven"
+            app:layout_constraintStart_toStartOf="@+id/button_seven" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_five"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/five"
+            app:layout_constraintBottom_toBottomOf="@+id/button_add"
+            app:layout_constraintEnd_toEndOf="@+id/button_eight"
+            app:layout_constraintStart_toStartOf="@+id/button_eight" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_six"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/six"
+            app:layout_constraintBottom_toBottomOf="@+id/button_add"
+            app:layout_constraintEnd_toEndOf="@+id/button_nine"
+            app:layout_constraintStart_toStartOf="@+id/button_nine" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_one"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/one"
+            app:layout_constraintBottom_toBottomOf="@+id/button_sub"
+            app:layout_constraintEnd_toEndOf="@+id/button_four"
+            app:layout_constraintStart_toStartOf="@+id/button_four" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_two"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/two"
+            app:layout_constraintBottom_toBottomOf="@+id/button_sub"
+            app:layout_constraintEnd_toEndOf="@+id/button_five"
+            app:layout_constraintStart_toStartOf="@+id/button_five" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_three"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/three"
+            app:layout_constraintBottom_toBottomOf="@+id/button_sub"
+            app:layout_constraintEnd_toEndOf="@+id/button_six"
+            app:layout_constraintStart_toStartOf="@+id/button_six" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_sign"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:text="@string/sign"
+            app:layout_constraintBottom_toBottomOf="@+id/button_equal"
+            app:layout_constraintEnd_toEndOf="@+id/button_one"
+            app:layout_constraintStart_toStartOf="@+id/button_one" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_zero"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/zero"
+            app:layout_constraintBottom_toBottomOf="@+id/button_dot"
+            app:layout_constraintEnd_toEndOf="@+id/button_two"
+            app:layout_constraintStart_toStartOf="@+id/button_two" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_dot"
+            style="@style/circleBasicButtonStyle.circleButtonStyle"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:onClick="onClickNumber"
+            android:text="@string/dot"
+            app:layout_constraintBottom_toBottomOf="@+id/button_equal"
+            app:layout_constraintEnd_toEndOf="@+id/button_three"
+            app:layout_constraintStart_toStartOf="@+id/button_three" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

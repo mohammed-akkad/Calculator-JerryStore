@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEF4F6"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".JerryStoreActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_profile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/jerry"
+            android:src="@drawable/jerry"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedCornersImageProfile" />
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/ibm_medium"
+            android:text="@string/hi_jerry"
+            android:textColor="#1F1F1F"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/image_profile"
+            app:layout_constraintTop_toTopOf="@+id/image_profile" />
+
+        <TextView
+            android:id="@+id/text_descripation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-4dp"
+            android:fontFamily="@font/ibm_regular"
+            android:text="@string/which_tom_do_you_want_to_buy"
+            android:textColor="#A5A6A4"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/text_title"
+            app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/notification_border_with_radius"
+            app:layout_constraintBottom_toBottomOf="@+id/text_descripation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_title" />
+
+        <ImageButton
+            android:id="@+id/image_button_notification"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/notification"
+            android:src="@drawable/icon_notification"
+            android:backgroundTint="#00000000"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout_badge"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/badge_notification_background"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/guideline_badge">
+
+            <TextView
+                android:id="@+id/textView_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ibm_medium"
+                android:text="@string/three"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
+        </FrameLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.87" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText_search"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="12dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/search_rounded"
+            android:drawableStart="@drawable/search"
+            android:drawablePadding="12dp"
+            android:fontFamily="@font/ibm_regular"
+            android:hint="@string/search_about_tom"
+            android:paddingStart="12dp"
+            android:textColor="#969799"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton_filter"
+            app:layout_constraintStart_toStartOf="@+id/image_profile"
+            app:layout_constraintTop_toBottomOf="@+id/text_descripation"
+            tools:ignore="RtlSymmetry" />
+
+        <ImageButton
+            android:id="@+id/imageButton_filter"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/filtter_shape"
+            android:contentDescription="@string/image_filter"
+            android:src="@drawable/filter"
+            app:layout_constraintBottom_toBottomOf="@+id/editText_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/guideline_search"
+            app:layout_constraintTop_toTopOf="@+id/editText_search" />
+
+        <View
+            android:id="@+id/view_slider"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/slider_shape"
+            app:layout_constraintEnd_toEndOf="@id/imageButton_filter"
+            app:layout_constraintStart_toStartOf="@id/editText_search"
+            app:layout_constraintTop_toBottomOf="@id/editText_search" />
+
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/buy_1_tom_and_get_2_for_free"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/view_slider"
+            app:layout_constraintTop_toTopOf="@+id/view_slider" />
+
+        <TextView
+            android:id="@+id/textView_subTitle"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/ibm_regular"
+            android:text="@string/adopt_tom_free_fail_free_nguarantee"
+            android:textColor="#CCFFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/textView_title"
+            app:layout_constraintTop_toBottomOf="@+id/textView_title" />
+
+        <ImageView
+            android:id="@+id/imageView_jerryCardSlider"
+            android:layout_width="115dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/jerry_card_slider"
+            android:scaleType="fitXY"
+            android:src="@drawable/jerry_card"
+            app:layout_constraintBottom_toBottomOf="@+id/view_slider"
+            app:layout_constraintEnd_toEndOf="@+id/view_slider"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_slider" />
+
+        <ImageView
+            android:id="@+id/imageView_ellipse"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/ellipse"
+            android:scaleType="fitXY"
+            android:src="@drawable/ellipse"
+            app:layout_constraintBottom_toBottomOf="@+id/view_slider"
+            app:layout_constraintEnd_toEndOf="@+id/view_slider"
+            app:layout_constraintTop_toTopOf="@+id/guideline_slider" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="108dp" />
+
+        <TextView
+            android:id="@+id/textView_cheap_tom_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/cheap_tom_section"
+            android:textAlignment="center"
+            android:textColor="#1F1F1E"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/view_slider"
+            app:layout_constraintTop_toBottomOf="@+id/view_slider" />
+
+        <TextView
+            android:id="@+id/textView_viewAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/ibm_medium"
+            android:text="@string/view_all"
+            android:textAlignment="center"
+            android:textColor="#03578A"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_cheap_tom_section"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_arrowRight"
+            app:layout_constraintTop_toTopOf="@+id/textView_cheap_tom_section" />
+
+        <ImageView
+            android:id="@+id/imageView_arrowRight"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/arrow_right"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_cheap_tom_section"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_cheap_tom_section" />
+
+        <View
+            android:id="@+id/view_jerry_card_first"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/jerry_card_shape"
+            app:layout_constraintEnd_toStartOf="@id/guideline_jerry"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_cheap_tom_section" />
+
+        <View
+            android:id="@+id/view_jerry_card_second"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/jerry_card_shape"
+            app:layout_constraintBottom_toBottomOf="@id/view_jerry_card_first"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/guideline_jerry"
+            app:layout_constraintTop_toTopOf="@id/view_jerry_card_first"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_jerry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/imageView_sportTom"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/sport_tom"
+            android:scaleType="fitXY"
+            android:src="@drawable/jerry_one"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_first"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_first"
+            app:layout_constraintTop_toTopOf="@+id/guideline_jerry_card_first" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_jerry_card_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="302dp" />
+
+        <TextView
+            android:id="@+id/textView_sportTom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/sport_tom_text"
+            android:textAlignment="center"
+            android:textColor="#1F1F1E"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_first"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_first"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_sportTom" />
+
+        <TextView
+            android:id="@+id/textView_sportTom_subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibm_regular"
+            android:lineHeight="16sp"
+            android:text="@string/he_runs_1_meter_trips_nover_his_boot"
+            android:textAlignment="center"
+            android:textColor="#969799"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_first"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_first"
+            app:layout_constraintTop_toBottomOf="@+id/textView_sportTom"
+            tools:ignore="UnusedAttribute" />
+
+        <View
+            android:id="@+id/view_price_first"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/money_background_shape"
+            app:layout_constraintEnd_toStartOf="@id/imageButton_cardShopFirst"
+            app:layout_constraintBottom_toBottomOf="@+id/view_jerry_card_first"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_first"
+            app:layout_constraintTop_toBottomOf="@+id/textView_sportTom_subTitle"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/imageButton_cardShopFirst"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/card_show_shape"
+            android:contentDescription="@string/card_shop_first"
+            android:src="@drawable/cart"
+            app:layout_constraintBottom_toBottomOf="@+id/view_price_first"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_first"
+            app:layout_constraintTop_toTopOf="@+id/view_price_first" />
+
+        <ImageView
+            android:id="@+id/imageView_bugMoney"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="12dp"
+            android:contentDescription="@string/bug_money"
+            android:src="@drawable/money_bag"
+            app:layout_constraintBottom_toBottomOf="@+id/view_price_first"
+            app:layout_constraintStart_toStartOf="@+id/view_price_first"
+            app:layout_constraintTop_toTopOf="@+id/view_price_first" />
+
+        <TextView
+            android:id="@+id/textView_discount_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/disCount_price"
+            android:textColor="#03578A"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView_bugMoney"
+            app:layout_constraintTop_toTopOf="@+id/imageView_bugMoney" />
+
+        <TextView
+            android:id="@+id/textView_price_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/_10_cheeses"
+            android:textColor="#03578A"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/textView_discount_first"
+            app:layout_constraintTop_toTopOf="@+id/textView_discount_first" />
+
+        <ImageView
+            android:id="@+id/imageView_tomLover"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/tome_lover"
+            android:scaleType="fitXY"
+            android:src="@drawable/jerry_2"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_second"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_second"
+            app:layout_constraintTop_toTopOf="@+id/guideline_jerry_card_first" />
+
+        <TextView
+            android:id="@+id/textView_tomLover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/tom_the_lover"
+            android:textAlignment="center"
+            android:textColor="#1F1F1E"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_second"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_second"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_tomLover" />
+
+        <TextView
+            android:id="@+id/textView_tomLover_subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/ibm_regular"
+            android:lineHeight="16sp"
+            android:text="@string/he_loves_one_sidedly_nand_is_beaten_by_the_other_nside"
+            android:textAlignment="center"
+            android:textColor="#969799"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_second"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_second"
+            app:layout_constraintTop_toBottomOf="@+id/textView_tomLover"
+            tools:ignore="UnusedAttribute" />
+
+        <View
+            android:id="@+id/view_price_second"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/money_background_shape"
+            app:layout_constraintBottom_toBottomOf="@+id/view_jerry_card_second"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton_cardShopSecond"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_second"
+            app:layout_constraintTop_toBottomOf="@+id/textView_tomLover_subTitle"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/imageButton_cardShopSecond"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/card_show_shape"
+            android:contentDescription="@string/card_shop_second"
+            android:src="@drawable/cart"
+            app:layout_constraintBottom_toBottomOf="@+id/view_price_second"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_second"
+            app:layout_constraintTop_toTopOf="@+id/view_price_second" />
+
+        <ImageView
+            android:id="@+id/imageView_bugMoneySecond"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="12dp"
+            android:contentDescription="@string/bug_money"
+            android:src="@drawable/money_bag"
+            app:layout_constraintBottom_toBottomOf="@+id/view_price_second"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_search"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/view_price_second"
+            app:layout_constraintTop_toTopOf="@+id/view_price_second" />
+
+
+        <TextView
+            android:id="@+id/textView_price_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/_5_cheeses"
+            android:textColor="#03578A"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_bugMoneySecond"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_search"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView_bugMoneySecond"
+            app:layout_constraintTop_toTopOf="@+id/imageView_bugMoneySecond"
+            app:layout_constraintVertical_bias="0.25" />
+
+        <View
+            android:id="@+id/view_jerry_card_three"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/jerry_card_shape"
+            app:layout_constraintEnd_toStartOf="@id/guideline_jerry"
+            app:layout_constraintStart_toStartOf="@id/view_jerry_card_first"
+            app:layout_constraintTop_toBottomOf="@+id/view_jerry_card_first" />
+
+        <View
+            android:id="@+id/view_jerry_card_four"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/jerry_card_shape"
+            app:layout_constraintBottom_toBottomOf="@id/view_jerry_card_three"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/guideline_jerry"
+            app:layout_constraintTop_toTopOf="@id/view_jerry_card_three"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView_tomBomb"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/tom_bomb"
+            android:scaleType="fitXY"
+            android:src="@drawable/jerry_three"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_three"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_three"
+            app:layout_constraintTop_toTopOf="@+id/guideline_jerry_card_second" />
+
+        <TextView
+            android:id="@+id/textView_tomBomb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/tom_the_bomb"
+            android:textAlignment="center"
+            android:textColor="#1F1F1E"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_three"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_three"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_tomBomb" />
+
+        <TextView
+            android:id="@+id/textView_tomBomb_subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibm_regular"
+            android:lineHeight="16sp"
+            android:text="@string/he_blows_himself_up_nbefore_jerry_can_catch_him"
+            android:textAlignment="center"
+            android:textColor="#969799"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_three"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_three"
+            app:layout_constraintTop_toBottomOf="@+id/textView_tomBomb"
+            tools:ignore="UnusedAttribute" />
+
+        <View
+            android:id="@+id/view_price_three"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/money_background_shape"
+            app:layout_constraintBottom_toBottomOf="@+id/view_jerry_card_three"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton_cardShopThree"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_three"
+            app:layout_constraintTop_toBottomOf="@+id/textView_tomBomb_subTitle"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/imageButton_cardShopThree"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/card_show_shape"
+            android:contentDescription="@string/card_shop_first"
+            android:src="@drawable/cart"
+            app:layout_constraintBottom_toBottomOf="@+id/view_price_three"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_three"
+            app:layout_constraintTop_toTopOf="@+id/view_price_three" />
+
+        <ImageView
+            android:id="@+id/imageView_bugMoneyThree"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="12dp"
+            android:contentDescription="@string/bug_money"
+            android:src="@drawable/money_bag"
+            app:layout_constraintBottom_toBottomOf="@+id/view_price_three"
+            app:layout_constraintStart_toStartOf="@+id/view_price_three"
+            app:layout_constraintTop_toTopOf="@+id/view_price_three" />
+
+        <TextView
+            android:id="@+id/textView_price_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/_10_cheeses"
+            android:textColor="#03578A"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_bugMoneyThree"
+            app:layout_constraintStart_toEndOf="@+id/imageView_bugMoneyThree"
+            app:layout_constraintTop_toTopOf="@+id/imageView_bugMoneyThree" />
+
+        <ImageView
+            android:id="@+id/imageView_spyTom"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/spy_tom_image"
+            android:scaleType="fitXY"
+            android:src="@drawable/jerry_four"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_four"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_four"
+            app:layout_constraintTop_toTopOf="@+id/guideline_jerry_card_second" />
+
+        <TextView
+            android:id="@+id/textView_spyTom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/spy_tom"
+            android:textAlignment="center"
+            android:textColor="#1F1F1E"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_four"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_four"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_spyTom" />
+
+        <TextView
+            android:id="@+id/textView_spyTom_subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/ibm_regular"
+            android:lineHeight="16sp"
+            android:text="@string/disguises_itself_as_a_table"
+            android:textAlignment="center"
+            android:textColor="#969799"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_four"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_four"
+            app:layout_constraintTop_toBottomOf="@+id/textView_spyTom"
+            tools:ignore="UnusedAttribute" />
+
+        <View
+            android:id="@+id/view_price_four"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/money_background_shape"
+            app:layout_constraintBottom_toBottomOf="@+id/view_jerry_card_four"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton_cardShopFour"
+            app:layout_constraintStart_toStartOf="@+id/view_jerry_card_four"
+            app:layout_constraintTop_toBottomOf="@+id/textView_spyTom_subTitle"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageButton
+            android:id="@+id/imageButton_cardShopFour"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/card_show_shape"
+            android:contentDescription="@string/card_shop_first"
+            android:src="@drawable/cart"
+            app:layout_constraintBottom_toBottomOf="@+id/view_price_four"
+            app:layout_constraintEnd_toEndOf="@+id/view_jerry_card_four"
+            app:layout_constraintTop_toTopOf="@+id/view_price_four" />
+
+        <ImageView
+            android:id="@+id/imageView_bugMoneyFour"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="12dp"
+            android:contentDescription="@string/bug_money"
+            android:src="@drawable/money_bag"
+            app:layout_constraintBottom_toBottomOf="@+id/view_price_four"
+            app:layout_constraintStart_toStartOf="@+id/view_price_four"
+            app:layout_constraintTop_toTopOf="@+id/view_price_four" />
+
+        <TextView
+            android:id="@+id/textView_price_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/ibm_semi_bold"
+            android:text="@string/_12_cheeses"
+            android:textColor="#03578A"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_bugMoneyFour"
+            app:layout_constraintStart_toEndOf="@+id/imageView_bugMoneyFour"
+            app:layout_constraintTop_toTopOf="@+id/imageView_bugMoneyFour" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_jerry_card_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="554dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="3dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
