@@ -2,14 +2,11 @@ package com.example.calculator
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.calculator.databinding.ActivityMainBinding
-import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -203,26 +200,67 @@ class MainActivity : AppCompatActivity() {
         if (parts.isEmpty()) return 0.0
         var result = parts.first().toDouble()
         if (parts.size == 2 && parts.last() == "%") {
-            result = result / 100
+            return result / 100
         }
-        var currentIndex = 1
-        while (currentIndex < parts.size - 1) {
-            val operator = parts[currentIndex]
-            val nextNumber = parts[currentIndex + 1].toDouble()
 
-            result = when (operator) {
-                "+" -> result + nextNumber
-                "-" -> result - nextNumber
-                "*" -> result * nextNumber
-                "/" -> if (nextNumber != 0.0) result / nextNumber else throw Exception("cant divide by zero")
-                "%" -> (result / 100) * nextNumber
-                else -> return 0.0
+        val numbers = mutableListOf<Double>()
+        val operators = mutableListOf<String>()
+        checkParts(parts,numbers,operators)
+        handleHighPriorityOperation(numbers,operators)
+        return finalResult(numbers,operators)
+
+    }
+
+    private fun checkParts(
+        parts: List<String>,
+        numbers: MutableList<Double>,
+        operators: MutableList<String>
+    ) {
+        var currentPart = 0
+        while (currentPart < parts.size) {
+            if (currentPart % 2 == 0) numbers.add(parts[currentPart].toDouble()) else operators.add(
+                parts[currentPart]
+            )
+            currentPart++
+        }
+    }
+
+    private fun finalResult(
+        numbers: MutableList<Double>,
+        operators: MutableList<String>
+    ): Double {
+        var result = numbers[0]
+        for (currentIndex in operators.indices) {
+            val nextNumber = numbers[currentIndex + 1]
+            when (operators[currentIndex]) {
+                "+" -> result += nextNumber
+                "-" -> result -= nextNumber
+            }
+        }
+        return result
+    }
+
+    private fun handleHighPriorityOperation(numbers: MutableList<Double>, operators: MutableList<String>) {
+        var currentIndex = 0
+        while (currentIndex < operators.size) {
+            if (operators[currentIndex] in listOf("*", "/", "%")) {
+                val left = numbers[currentIndex]
+                val right = numbers[currentIndex + 1]
+                val operator = operators[currentIndex]
+                val result = when (operator) {
+                    "*" -> left * right
+                    "/" -> if (right != 0.0) left / right else throw Exception("cant divide by zero")
+                    "%" -> (left / 100) * right
+                    else -> return
+                }
+                numbers[currentIndex] = result
+                numbers.removeAt(currentIndex + 1)
+                operators.removeAt(currentIndex)
+            } else {
+                currentIndex++
             }
 
-            currentIndex += 2
         }
-
-        return result
     }
 
     private fun endsWithOperator(text: String): Boolean {

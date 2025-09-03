@@ -4,4 +4,6 @@
     <dimen name="marginExtraLarge">24dp</dimen>
     <dimen name="marginNormal">8dp</dimen>
     <dimen name="marginLarge">16dp</dimen>
+    <dimen name="paddingLarge">16dp</dimen>
+    <dimen name="marginXNormal">12dp</dimen>
 </resources>
