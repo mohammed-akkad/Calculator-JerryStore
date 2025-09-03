@@ -216,12 +216,12 @@ class MainActivity : AppCompatActivity() {
         numbers: MutableList<Double>,
         operators: MutableList<String>
     ) {
-        var currentPart = 0
-        while (currentPart < parts.size) {
-            if (currentPart % 2 == 0) numbers.add(parts[currentPart].toDouble()) else operators.add(
-                parts[currentPart]
+        var currentIndex = 0
+        while (currentIndex < parts.size) {
+            if (currentIndex % 2 == 0) numbers.add(parts[currentIndex].toDouble()) else operators.add(
+                parts[currentIndex]
             )
-            currentPart++
+            currentIndex++
         }
     }
 
